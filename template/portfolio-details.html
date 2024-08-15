@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!--================ Start Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Portfolio Details</h2>
+                    <div class="page_link">
+                        <a href="{% url 'index-page' %}">Home</a>
+                        <a href="{% url 'portfolio-page' %}">Portfolio</a>
+                        <a href="{% url 'portfolio-details-page' %}">Portfolio Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Banner Area =================-->
+
+	<!--================Start Portfolio Details Area =================-->
+	<section class="portfolio_details_area section_gap">
+        {% for portfolio in portfolios %}
+        <div class="container">
+            <div class="portfolio_details_inner">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="left_img">
+                            <img class="img-fluid" style="width: 200px; height: auto;" src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-5">
+                        <div class="portfolio_right_text mt-30">
+                            <h4 class="text-uppercase">{{ portfolio.title }}</h4>
+                            <ul class="list">
+                                <li><span>Client</span>: {{ portfolio.client }}</li>
+                                <li><span>Website</span>: <a href="{{ portfolio.website }}">{{ portfolio.website }}</a></li>
+                                <li><span>Completed</span>: {{ portfolio.completed_date }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p>{{ portfolio.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!--================End Portfolio Details Area =================-->
+    
+    <!--================ Start Newsletter Area =================-->
+    <section class="newsletter_area">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-12">
+                    <div class="subscription_box text-center">
+                        <h2 class="text-uppercase text-white">get update from anywhere</h2>
+                        <p class="text-white">
+                            Bearing Void gathering light light his eavening unto dont afraid. 
+                        </p>
+                        <div class="subcribe-form" id="mc_embed_signup">
+                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
+                                <input name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" type="email">
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                                </div>
+                                <button class="primary-btn hover d-inline">Get Started</button>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Newsletter Area =================-->
+
+{% endblock content %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!--================ Start Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Blog</h2>
+                    <div class="page_link">
+                        <a href="{% url 'index-page' %}">Home</a>
+                        <a href="{% url 'blog-page' %}">Our Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Banner Area =================-->
+        
+    <!--================Blog Categorie Area =================-->
+    <!-- blogs -->
+<br><section class="section">
+    <div class="container">
+      <div class="row">
+        <!-- blog post -->
+        {% for post in posts %}
+        <article class="col-lg-4 col-sm-6 mb-5">
+          <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+            <img class="card-img-top rounded-0" src="{{ post.image.url }}" alt="Post thumb">
+            <div class="card-body">
+              <!-- post meta -->
+              <ul class="list-inline mb-3">
+                <!-- post date -->
+                <li class="list-inline-item mr-3 ml-0">{{ post.date|date:"F d, Y" }}</li>
+                <!-- author -->
+                <li class="list-inline-item mr-3 ml-0">{{ post.author }}</li>
+              </ul>
+              <a href="{% url 'single-blog-page' %}">
+                <h4 class="card-title">{{ post.title }}</h4>
+              </a>
+              <p class="card-text">{{ post.excerpt|truncatewords:10 }}</p>
+              <a href="{% url 'single-blog-page' %}" class="btn btn-primary btn-sm">read more</a>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- /blogs -->
+  
+    <!--================Blog Area =================-->
+
+     <!--================ Start Newsletter Area =================-->
+     <section class="newsletter_area">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-12">
+                    <div class="subscription_box text-center">
+                        <h2 class="text-uppercase text-white">get update from anywhere</h2>
+                        <p class="text-white">
+                            Bearing Void gathering light light his eavening unto dont afraid. 
+                        </p>
+                        <div class="subcribe-form" id="mc_embed_signup">
+                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
+                                <input name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" type="email">
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                                </div>
+                                <button class="primary-btn hover d-inline">Get Started</button>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock content %}
